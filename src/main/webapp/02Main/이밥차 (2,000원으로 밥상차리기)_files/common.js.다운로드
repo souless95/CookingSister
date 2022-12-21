@@ -1,0 +1,210 @@
+function setCookie(name, value, expiredays){
+    var todayDate = new Date();
+    todayDate.setDate(todayDate.getDate() + expiredays);
+    document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+function getCookie( name ){
+	thisCookie = document.cookie.split("; ");
+	for(i=0; i<thisCookie.length; i++){
+		if(name == thisCookie[i].split("=")[0]){
+			return thisCookie[i].split("=")[1];
+		}
+	}
+	return "x";
+}
+function closeWin(obj,id){
+    if(obj.checked == true){
+        setCookie( "pop_"+id, "1" , 1);
+    }
+    window.open('about:blank','_self').self.close();
+}
+$(document).ready(function() {
+	// 퀵메뉴
+	
+	if($("#qVal").val() != "1"){
+		var currentPosition = parseInt($("#quick").css("top")); 
+		$(window).scroll(function() {
+			var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+			var sHeight = position+currentPosition;
+			if($(document).height() > 900) $("#quick").stop().animate({"top":sHeight+"px"},1000); 
+			//$("#quick2").stop().animate({"top":position+currentPosition+"px"},1000); 
+		});
+	}
+
+	// 맨위로
+	$('.quicktop').click(function(){
+		$('html, body').animate({scrollTop:0}, 'slow');
+	});
+});
+function noStock(){
+	alert("재고가 없습니다.");
+	return false;
+}
+function getTypeCheck (s, spc){
+		var i;
+	 
+		for(i=0; i< s.length; i++){
+			if (spc.indexOf(s.substring(i, i+1)) < 0)
+				return false;
+		}        
+		return true;
+	}
+/* 콤마설정 */    
+function putComma(input) { 
+	var num = input;
+     
+	if (num < 0) { 
+		num *= -1; 
+		var minus = true
+	}else{
+		var minus = false
+	}
+     
+	var dotPos = (num+"").split(".")
+	var dotU = dotPos[0]
+	var dotD = dotPos[1]
+	var commaFlag = dotU.length%3
+
+	if(commaFlag) {
+		var out = dotU.substring(0, commaFlag) 
+		if (dotU.length > 3) out += ","
+	}
+	else var out = ""
+
+	for (var i=commaFlag; i < dotU.length; i+=3) {
+		out += dotU.substring(i, i+3) 
+		if( i < dotU.length-3) out += ","
+	}
+
+	if(minus) out = "-" + out
+	if(dotD) return out + "." + dotD
+	else return out 
+}
+
+function money2int( cents ) 
+{
+	var originstr = cents.toString();
+	var money = ""
+	money = originstr.replace(/,/g, "");
+	return money;
+}
+function NextInput(obj,obj2,num){
+	var str = obj.value.length;
+	var nxt = obj2;
+	if(str == num){
+		nxt.focus();
+	}
+}
+
+function showFlash(source,width,height)
+{ 
+ document.write("<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,22,0\" width="+width+" height="+height+"><param name=wmode value=\"transparent\" /><param name=movie value="+source+" /><param name=quality value=high /><embed src="+source+" quality=high wmode=\"transparent\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/shockwave/download/index.cgi?p1_prod_version=shockwaveflash\" width="+width+" height="+height+"></embed></object>");
+}
+
+
+function kmSetComma(n){
+	var reg = /(^[+-]?\d+)(\d{3})/;
+	n += '';
+	while (reg.test(n)){
+		n = n.replace(reg, '$1' + ',' + '$2');
+	}			
+	return n;
+}
+
+function imgslide(move){
+	//클릭 방지
+	buttonBind("up_img_btn","click");
+	buttonBind("down_img_btn","click");
+	//이동할 px
+	var moveVal = "88";
+	//이동 플래그
+	var moveFlag = true;
+	//상품 수 체크
+	var imgCnt = $(".quick_areaList").children("div").length;
+	//마지막 이미지 체크
+	var imgBottom = (moveVal * imgCnt)-Math.abs(parseInt($(".quick_areaList").css("top")));	
+	if(move=="up") {
+		moveVal = "-="+moveVal;			
+		if(imgBottom<=264){
+			//alert("최근 본 첫번쨰 상품입니다.");
+			moveFlag = false;
+			//클릭 방지해제
+			buttonUnBind("up_img_btn","click");
+			buttonUnBind("down_img_btn","click");
+		} 
+	} else{
+		var moveVal = "+="+moveVal;
+		if(parseInt($(".quick_areaList").css("top"))==0){
+			//alert("최근 본 첫번쨰 상품입니다.");
+			moveFlag = false;
+			//클릭 방지해제
+			buttonUnBind("up_img_btn","click");
+			buttonUnBind("down_img_btn","click");
+		} 
+	}
+	if(moveFlag){
+		$('.quick_areaList').animate({    
+		top: moveVal
+	  }, 500, function() {
+		//클릭 방지해제
+		buttonUnBind("up_img_btn","click");
+		buttonUnBind("down_img_btn","click");
+	  });	
+	}
+}
+
+function buttonUnBind(objID,action){
+	 $("#"+objID).unbind(action);	
+}
+function buttonBind(objID,action){
+	 $("#"+objID).bind(action,false);	
+}
+
+function openDaumPostcode(post,post2,addr,addr2) {
+	new daum.Postcode({
+		oncomplete: function(data) {
+			// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+			// 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+			var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+			var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+			// 법정동명이 있을 경우 추가한다.
+			if(data.bname !== ''){
+				extraRoadAddr += data.bname;
+			}
+			// 건물명이 있을 경우 추가한다.
+			if(data.buildingName !== ''){
+				extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+			}
+			// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+			if(extraRoadAddr !== ''){
+				extraRoadAddr = ' (' + extraRoadAddr + ')';
+			}
+			// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+			if(fullRoadAddr !== ''){
+				fullRoadAddr += extraRoadAddr;
+			}
+			
+			//추가배송비의 경우 한쪽으로 몰아서 넣는다.
+			if(typeof(post2)=="undefined" && typeof(addr)=="undefined" && typeof(addr2)=="undefined"){
+				document.getElementById(post).value = data.postcode1+"-"+data.postcode2;
+			} else{
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById(post).value = data.postcode1;
+				document.getElementById(post2).value = data.postcode2;
+				document.getElementById(addr).value = fullRoadAddr;//+" "+data.jibunAddress;
+				document.getElementById(addr2).focus();			
+			}
+		}
+	}).open();
+}
+
+
+
+$(document).ready(function(){
+	//퀵메뉴 높이값 지정
+	if(parseInt($(".quick_areaList").height())>264) $(".quick_areaList").height(264);
+	$(".quick_area").height($(".quick_areaList").height());
+});
