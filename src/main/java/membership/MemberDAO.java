@@ -53,6 +53,28 @@ public class MemberDAO extends JDBConnect {
 		return dto;
 	}
 	
+	public MemberDTO idCheck(String id) {
+		
+		MemberDTO dto = new MemberDTO();
+		
+		String query = "SELECT * FROM member WHERE id=?";
+		
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setId(rs.getString("id"));
+			}
+			
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;			
+	}
 	
 	
 

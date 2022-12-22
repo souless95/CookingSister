@@ -1,5 +1,16 @@
+<%@page import="membership.MemberDTO"%>
+<%@page import="membership.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String uId = request.getParameter("id");
+
+MemberDAO dao = new MemberDAO(application);
+
+MemberDTO dto = dao.idCheck(uId);
+
+dao.close();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +25,12 @@
     </script>
 </head>
 <body>
-
-    <!--
-    JSP연동 이후 실행가능한 코드. 파라미터로 전달된 id를 받아온다.
-    -->  
-
-    <h3>부모창에서 입력한 아이디 : <%=request.getParameter("id")%></h3>
-
+<% if(dto.getId()==null){
+	out.print("사용가능한 아이디입니다.");
+}
+else{
+	out.print("중복된 아이디입니다.");	
+} %>
     <h3>아이디가 중복되었을때 재입력한 아이디</h3>
     <form name="overlapFrm">
         <input type="text" name="retype_id" size="20">
