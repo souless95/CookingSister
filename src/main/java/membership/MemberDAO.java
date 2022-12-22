@@ -44,8 +44,6 @@ public class MemberDAO extends JDBConnect {
 				//정보가 있다면 DTO객체에 회원정보를 저장한다.
 				dto.setId(rs.getString("id"));
 				dto.setPass(rs.getString("pass"));
-				dto.setName(rs.getString(3));
-				dto.setRegidate(rs.getString(4));
 			}
 		} 
 		catch (Exception e) {
@@ -54,6 +52,8 @@ public class MemberDAO extends JDBConnect {
 		//호출한 지점으로 DTO객체를 반환한다.
 		return dto;
 	}
+	
+	
 	
 
 	

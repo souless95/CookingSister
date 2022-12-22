@@ -10,17 +10,10 @@ public class MemberDTO {
 	//멤버변수 : member테이블의 컬럼과 동일하게 설정한다.
 	private String id;
 	private String pass;
-	private String name;
-	private String regidate;
+	private String userName;
+	private String email;
+	private String phone;
 	
-	/*
-	생성자의 경우 꼭 필요한 경우가 아니라면 생성하지 않아도 된다.
-	생성자를 생성하지 않는 경우 컴파일러에 의해 디폴트생성자
-	(기본생성자)가 자동으로 추가되기 때문이다. 
-	*/
-	
-	//정보은닉된 멤버변수에 접근을 위해 public으로 정의된
-	//getter,setter를 정의한다.
 	public String getId() {
 		return id;
 	}
@@ -33,17 +26,23 @@ public class MemberDTO {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getRegidate() {
-		return regidate;
+	public String getEmail() {
+		return email;
 	}
-	public void setRegidate(String regidate) {
-		this.regidate = regidate;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 }
