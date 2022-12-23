@@ -1,11 +1,14 @@
 package membership;
 
+
+import java.util.List;
+import java.util.Vector;
+import common.JDBConnect;
 import javax.servlet.ServletContext;
 /*
 DAO(Data Access Object)
 : 실제 데이터베이스에 접근하여 여러가지 CRUD작업을 하기위한 객체
 */
-import common.JDBConnect;
 
 public class MemberDAO extends JDBConnect {
 
@@ -74,9 +77,103 @@ public class MemberDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return dto;			
+	}	
+	
+	public int registMember (MemberDTO dto) {
+		
+		int result = 0;
+		
+		try {
+			String query = "INSERT member (id, pass, userName, email, phone) "
+					+ "VALUES (?, ?, ?, ?, ?) ";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPass());
+			psmt.setString(3, dto.getUserName());
+			psmt.setString(4, dto.getEmail());
+			psmt.setString(5, dto.getPhone());
+			
+			result = psmt.executeUpdate();			
+		} 
+		catch (Exception e) {
+			System.out.println("회원정보 등록 중 오류 발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	
+	public MemberDTO idFind(String uName, String uEmail) {
+		
+		MemberDTO dto = new MemberDTO();
+		
+		String query = "SELECT * FROM member WHERE userName=? AND email=?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, uName);
+			psmt.setString(2, uEmail);
+			
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setUserName("userName");
+				dto.setEmail(rs.getString("email"));
+				dto.setId(rs.getString("id"));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
 
+	public int passFind(String uId, String uName, String uEmail) {
+		
+		MemberDTO dto = new MemberDTO();
+		
+		int result = 0;
+		
+		String query = "SELECT * FROM member WHERE id=? AND userName=? AND email=?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, uId);
+			psmt.setString(2, uName);
+			psmt.setString(3, uEmail);
+			
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				result =  1;
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
+	public int updatePass(String uId, String uPass) {
+		
+		MemberDTO dto = new MemberDTO();
+		
+		int result = 0;
+		
+		String query = "UPDATE member SET pass=? WHERE id=? ";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, uPass);
+			psmt.setString(2, uId);
+			
+			result = psmt.executeUpdate();
+			
+		} 
+		catch (Exception e) {
+			System.out.println("비밀번호 변경 중 오류 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

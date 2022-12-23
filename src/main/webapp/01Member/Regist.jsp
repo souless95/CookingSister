@@ -27,8 +27,8 @@ function validateForm(form) {
 		form.mID.focus();
 		return false;
 	}
-	if(idch == 0){
-		alert("중복체크해주세요.");
+	if(form.IDChk.value == 0){
+		alert("아이디 중복체크를 해주세요.");
 		return false;
 	}
 	if(form.mPass.value==""){
@@ -83,9 +83,13 @@ function validateForm(form) {
 
 function idCheck(){
     var frm = document.forms[0];
-
+	
+    
+    
     frm.mID.readOnly = true;
-
+	
+    frm.IDChk.value= 1;
+    
     window.open("id_overapping.jsp?id="+frm.mID.value,"idover","width=400,height=300");
 }
 
@@ -110,13 +114,9 @@ function idCheck(){
 			<div class="join join_inner">
 			
 				<!-- 회원가입 -->
-				<form action="RegistProccess.jsp" method="post" name="mJoin" id="mJoin" onsubmit="return validateForm(this);">
 				
-				<input type="hidden" name="mPhone" id="mPhone">
+				<form action="RegistProccess.jsp" method="post" name="mJoin" id="mJoin" onsubmit="return validateForm(this);">
 				<input type="hidden" name="IDChk" id="IDChk" value="0">
-				<input type="hidden" name="NickChk" id="NickChk" value="0">
-				<input type="hidden" name="rNumChk" id="rNumChk" value="0">
-				<input type="hidden" name="mInterest">
 				
 				<h2 class="join_title mt40">기본정보입력</h2>
 				
@@ -128,7 +128,7 @@ function idCheck(){
 					<tbody><tr>
 						<th>아이디</th>
 						<td>
-							<input type="text" name="mID" id="mID" onchange="document.all.IDChk.value=0" class="join_input wd200"> 
+							<input type="text" name="mID" id="mID" class="join_input wd200"> 
 							<img src="../Images/btn_check.jpg" alt="중복체크" id="ChkID" style="cursor:pointer;" onclick="idCheck(this.form);">
 						</td>
 					</tr>
@@ -172,7 +172,7 @@ function idCheck(){
 								<option value="018">018</option>
 								<option value="019">019</option>
 							</select> -
-							<input type="text" name="Phone2" id="mPhone2" value="" class="join_input wd60" maxlength="4" onkeyup="NextInput(this,document.getElementById('mPhone3'),'4');"> - <input type="text" name="mPhone3" id="mPhone3" value="" class="join_input wd60" maxlength="4">
+							<input type="text" name="mPhone2" id="mPhone2" value="" class="join_input wd60" maxlength="4" onkeyup="NextInput(this,document.getElementById('mPhone3'),'4');"> - <input type="text" name="mPhone3" id="mPhone3" value="" class="join_input wd60" maxlength="4">
 						</td>
 					</tr>
 				</tbody></table>
