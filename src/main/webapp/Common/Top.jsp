@@ -21,7 +21,7 @@
 			<ul class="clr menu">
 				<li class=""><a href="xxx">레시피</a></li>
 				<li class=""><a href="xxx">밥못누 TV</a></li>
-				<li class=""><a href="xxx">요리공유</a></li>
+				<li class=""><a href="xxx">요리 공유</a></li>
 			</ul>
 		</div>
 		<div class="fr">

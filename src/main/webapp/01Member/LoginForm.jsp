@@ -1,5 +1,15 @@
+<%@page import="utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String loginId = CookieManager.readCookie(request, "loginId");
+
+String cookieCheck = "";
+
+if(!loginId.equals("")){
+	cookieCheck = "checked";
+}
+%>
 <html style="" class=" js no-touch csstransitions"><head>
 <%@ include file ="../Common/style.jsp" %>
 </head>
@@ -21,12 +31,12 @@
 							<h3 class="title">로그인</h3>
 							<div class="member_loginArea clr">
 								<ul>
-									<li><span>아이디</span><input type="text" id="mId" name="mId" class="login_input"></li>
+									<li><span>아이디</span><input type="text" id="mId" name="mId" value="<%=loginId%>" class="login_input"></li>
 									<li><span>비밀번호</span><input type="password" id="mPw" name="mPw" class="login_input"></li>
 								</ul>
 								<p class="btn_login" id="login_btn"><input type="image" src="../Images/btn_login.jpg" alt="로그인"></p>
 							</div>
-								<input type="checkbox" id="autoId" name="autoId" value="아이디 저장하기" style="margin-left:88px;" >아이디 저장하기
+								<input type="checkbox" name="save_check" value="Y" <%=cookieCheck%> style="margin-left:88px;">아이디 저장하기
 								   <span style="color:red; font-size:1.2em; float:right;">
 								      <%=request.getAttribute("LoginErrMsg")==null?
 								            "" : request.getAttribute("LoginErrMsg")%>

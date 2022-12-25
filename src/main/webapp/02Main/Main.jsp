@@ -149,6 +149,8 @@ wcs_do();
 </head>
 <body cz-shortcut-listen="true">
 
+<%@ include file ="../Common/Top.jsp" %>
+
 	<div id="con_wrapper">
 		
 
@@ -166,144 +168,6 @@ wcs_do();
 
 
 
-
-<!-- s: header -->
-<div id="header">
-	<div class="contain clr">
-		<h1><a href="https://2bob.co.kr/" class="h_logo"><img src="./이밥차 (2,000원으로 밥상차리기)_files/h_logo.jpg" alt="이밥차"></a></h1>
-				<div class="fl">
-			<ul class="clr menu">
-				<li class=""><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=1">레시피</a></li>
-				<li class=""><a href="https://2bob.co.kr/tv.php?id=list">이밥차 TV</a></li>
-				<li class=""><a href="https://2bob.co.kr/bbs.php?id=timeLine">맛있는 생활</a></li>
-			</ul>
-		</div>
-		<div class="fr">
-			<ul class="clr gnb">
-				<li><a href="https://2bob.co.kr/login.php">로그인</a></li>
-				<li><a href="https://2bob.co.kr/login.php?a=choice">회원가입</a></li>
-				<li><a href="https://2bob.co.kr/bbs.php?id=faq">고객센터</a></li>
-				<li><a href="javascript:void(0);" class="search_btn"><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_h_search.jpg" alt="검색"></a></li>
-						</ul>
-		</div>
-	</div>
-</div>
-<div class="search_wrap">
-	<div class="contain">
-		<a href="javascript:search_off();" class="search_close"><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_search_close.jpg" alt="닫기"></a>
-		<div class="search_box">
-			<input type="text" id="fKeyValue1" name="fKeyValue" value="" maxlength="20">
-			<a href="javascript:go_popSearch();"><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_search_btn.jpg" alt="검색"></a>
-		</div>
-		<div class="search_tag">
-			<img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_search_tag.jpg" alt="인기검색어">
-			<div class="tag_box">
-							<a href="javascript:go_popSearch(&#39;볶음밥&#39;);">볶음밥,</a>
-							<a href="javascript:go_popSearch(&#39;삼치&#39;);">삼치,</a>
-							<a href="javascript:go_popSearch(&#39;닭&#39;);">닭,</a>
-							<a href="javascript:go_popSearch(&#39;유자&#39;);">유자,</a>
-							<a href="javascript:go_popSearch(&#39;김장&#39;);">김장,</a>
-							<a href="javascript:go_popSearch(&#39;파티&#39;);">파티</a>
-						</div>
-		</div>
-	</div>
-</div>
-<div class="navi_wrap">
-	<div class="contain">
-		<a href="javascript:navi_close();" class="navi_close"><img src="./이밥차 (2,000원으로 밥상차리기)_files/btn_navi_close.jpg" alt=""></a>
-		<div class="w_bg">
-			<table cellspacing="0" class="navi_al">
-				<tbody><tr>
-					<th><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_navi_1.jpg" alt="">레시피</th>
-					<th><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_navi_2.jpg" alt="">이밥차 TV</th>
-					<th><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_navi_3.jpg" alt="">맛있는 생활</th>
-					<th class="lt0"><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_navi_4.jpg" alt="">SHOP</th>
-					<th><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_navi_5.jpg" alt="">이밥차</th>
-					<th><img src="./이밥차 (2,000원으로 밥상차리기)_files/icon_navi_6.jpg" alt="">마이페이지</th>
-				</tr>
-				<tr>
-					<td>
-						<ul class="navi_list fl mr40">
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=1">밥요리</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=2">국&amp;탕</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=3">찌개&amp;전골</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=4">밑반찬</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=5">볶음요리</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=6">구이(고기/생선)</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=7">찜&amp;조림</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=8">손님상</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=9">아이반찬</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=10">김치장아찌</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=11">도시락</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=12">튀김</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=13">면요리</a></li>
-						</ul>
-						<ul class="navi_list fr">
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=14">샐러드</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=15">김밥&amp;초밥</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=16">야식&amp;안주</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=17">스파게티</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=18">간식/분식</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=19">토스트/샌드위치</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=20">베이킹</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=21">디저트</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=22">주스&amp;음료</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=23">술&amp;칵테일</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=24">명절요리</a></li>
-							<li><a href="https://2bob.co.kr/recipe.php?id=list&amp;eTheme=25">기타요리</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-							<li><a href="https://2bob.co.kr/tv.php?id=list">이밥차 TV</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-							<li><a href="https://2bob.co.kr/bbs.php?id=timeLine">맛있는 생활</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-							<li><a href="https://2bob.co.kr/goods.php?code=1000000" class="lt0">2분밥차</a></li>
-							<li><a href="https://2bob.co.kr/goods.php?code=2000000" class="lt0">신선식품</a></li>
-							<li><a href="https://2bob.co.kr/goods.php?code=3000000" class="lt0">리빙</a></li>
-							<li><a href="https://2bob.co.kr/subscription.php?id=view" class="lt0">정기구독</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-							<li><a href="https://2bob.co.kr/landing.php" target="_blank">회사소개</a></li>
-							<li><a href="https://2bob.co.kr/page.php?idx=42">광고및마케팅 제휴 문의</a></li>
-							<li><a href="https://2bob.co.kr/index.php?a=privacy">개인정보취급방침</a></li>
-							<li><a href="https://2bob.co.kr/index.php?a=useinfo">이용약관</a></li>
-							<li><a href="https://2bob.co.kr/bbs.php?id=faq">고객센터</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-														<li><a href="https://2bob.co.kr/shop_login.php">로그인</a></li>
-							<li><a href="https://2bob.co.kr/login.php?a=choice">회원가입</a></li>
-													<li><a href="https://2bob.co.kr/mypage.php?a=info">나의 정보 수정</a></li>
-							<li><a href="https://2bob.co.kr/bbs.php?id=faq">자주 묻는 질문</a></li>
-							<li><a href="https://2bob.co.kr/mypage.php?a=orderlist">주문 내역</a></li>
-							<li><a href="https://2bob.co.kr/mypage.php?a=my_recipe_like">찜한 레시피</a></li>
-							<li><a href="https://2bob.co.kr/mypage.php?a=wishlist">찜한 상품</a></li>
-							<li><a href="https://2bob.co.kr/subscription.php?id=list">정기 구독 현황</a></li>
-							<li><a href="javascript:alert(&#39;서비스 준비중입니다.&#39;);">적립금 내역</a></li>
-							<!-- <li><a href="mypage.php?a=point">적립금 내역</a></li> -->
-							<li><a href="https://2bob.co.kr/mypage.php?a=review">구매후기</a></li>
-							<li><a href="https://2bob.co.kr/mypage.php?a=qna_list">나의 상품 Q&amp;A</a></li>
-							<li><a href="https://2bob.co.kr/bbs.php?id=oneNone">1:1 문의</a></li>
-						</ul>
-					</td>
-				</tr>
-			</tbody></table>
-		</div>
-	</div>
-</div>
-
-	<!--// End Header -->
 	<script language="JavaScript">
 	function bluring(){
 	if(event.srcElement.tagName=="A"||event.srcElement.tagName=="IMG") document.body.focus();
