@@ -26,11 +26,23 @@
 		</div>
 		<div class="fr">
 			<ul class="clr gnb">
+				<% 
+				if(session.getAttribute("UserId")==null){
+				%>
 				<li><a href="../01Member/LoginForm.jsp">로그인</a></li>
 				<li><a href="../01Member/Regist.jsp">회원가입</a></li>
 				<li><a href="xxx">고객센터</a></li>
+				<%
+				} else {
+				%>
+				<li><%=session.getAttribute("UserName") %> 회원님</li>
+				<li><a href="Edit.jsp">회원정보수정</a></li>				
+				<li><a href="Logout.jsp">로그아웃</a></li>				
+				<%
+				}
+				%>
 				<li><a href="javascript:void(0);" class="search_btn"><img src="../Images/icon_h_search.jpg" alt="검색"></a></li>
-						</ul>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -53,41 +65,4 @@
 						</div>
 		</div>
 	</div>
-</div>
-<div class="navi_wrap">
-	<div class="contain">
-		<a href="javascript:navi_close();" class="navi_close"><img src="/skin/nodskin_argio/images/btn_navi_close.jpg" alt=""></a>
-		<div class="w_bg">
-			<table cellspacing="0" class="navi_al">
-				<tbody><tr>
-					<th><img src="/skin/nodskin_argio/images/icon_navi_1.jpg" alt="">레시피</th>
-					<th><img src="/skin/nodskin_argio/images/icon_navi_2.jpg" alt="">이밥차 TV</th>
-					<th><img src="/skin/nodskin_argio/images/icon_navi_3.jpg" alt="">맛있는 생활</th>
-					<th class="lt0"><img src="/skin/nodskin_argio/images/icon_navi_4.jpg" alt="">SHOP</th>
-					<th><img src="/skin/nodskin_argio/images/icon_navi_5.jpg" alt="">이밥차</th>
-					<th><img src="/skin/nodskin_argio/images/icon_navi_6.jpg" alt="">마이페이지</th>
-				</tr>
-				<tr>
-					<td>
-						<ul class="navi_list">
-							<li><a href="tv.php?id=list">이밥차 TV</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-							<li><a href="bbs.php?id=timeLine">맛있는 생활</a></li>
-						</ul>
-					</td>
-					<td>
-						<ul class="navi_list">
-							<li><a href="https://2bob.co.kr/shop_login.php">로그인</a></li>
-							<li><a href="https://2bob.co.kr/login.php?a=choice">회원가입</a></li>
-							<li><a href="mypage.php?a=info">나의 정보 수정</a></li>
-						</ul>
-					</td>
-				</tr>
-			</tbody></table>
-		</div>
-	</div>
-	h2
 </div>

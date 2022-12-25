@@ -8,7 +8,6 @@
 
 <%@ include file ="../Common/Top.jsp" %>
 	<hr>
-	
 	<!-- Start Container -->
 	<div class="contain">
 		<div class="login ">
@@ -27,6 +26,11 @@
 								</ul>
 								<p class="btn_login" id="login_btn"><input type="image" src="../Images/btn_login.jpg" alt="로그인"></p>
 							</div>
+								<input type="checkbox" id="autoId" name="autoId" value="아이디 저장하기" style="margin-left:88px;" >아이디 저장하기
+								   <span style="color:red; font-size:1.2em; float:right;">
+								      <%=request.getAttribute("LoginErrMsg")==null?
+								            "" : request.getAttribute("LoginErrMsg")%>
+								   </span>
 							<p class="no_login">
 								<a href="#" onclick="window.open('idFind.jsp','','width=560,height=355,top='+(screen.availHeight/2-250)+',left='+(screen.availWidth/2-400)+',status=yes,scrollbars=no')">아이디 찾기</a><span class="line">|</span>
 								<a href="#" onclick="window.open('passFind.jsp','','width=560,height=410,top='+(screen.availHeight/2-250)+',left='+(screen.availWidth/2-400)+',status=yes,scrollbars=no')">비밀번호 찾기</a><span class="line">|</span>

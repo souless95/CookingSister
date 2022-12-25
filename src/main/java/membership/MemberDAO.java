@@ -47,6 +47,7 @@ public class MemberDAO extends JDBConnect {
 				//정보가 있다면 DTO객체에 회원정보를 저장한다.
 				dto.setId(rs.getString("id"));
 				dto.setPass(rs.getString("pass"));
+				dto.setUserName(rs.getString("userName"));
 			}
 		} 
 		catch (Exception e) {
@@ -172,6 +173,28 @@ public class MemberDAO extends JDBConnect {
 		} 
 		catch (Exception e) {
 			System.out.println("비밀번호 변경 중 오류 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int editMember (MemberDTO dto) {
+		
+		int result = 0;
+		
+		try {
+			String query = "UPDATE member SET pass=?, email=?, phone=? WHERE id=? ";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getPass());
+			psmt.setString(2, dto.getEmail());
+			psmt.setString(3, dto.getPhone());
+			psmt.setString(4, dto.getId());
+			
+			result = psmt.executeUpdate();			
+		} 
+		catch (Exception e) {
+			System.out.println("회원정보 수정 중 오류 발생");
 			e.printStackTrace();
 		}
 		return result;

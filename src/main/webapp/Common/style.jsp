@@ -2,35 +2,35 @@
     pageEncoding="UTF-8"%>
 <link rel="shortcut icon" href="http://2bob.co.kr/images/favicon.ico">
 	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-	<link rel="stylesheet" href="./이밥차 (2,000원으로 밥상차리기)_files/jquery-ui.min.css">
-	<link type="text/css" rel="stylesheet" href="./이밥차 (2,000원으로 밥상차리기)_files/default.css">
-	<link type="text/css" rel="stylesheet" href="./이밥차 (2,000원으로 밥상차리기)_files/swiper.min.css">
-	<link type="text/css" rel="stylesheet" href="./이밥차 (2,000원으로 밥상차리기)_files/style_member.css">
-	<link type="text/css" rel="stylesheet" href="./이밥차 (2,000원으로 밥상차리기)_files/style.css">
+	<link rel="stylesheet" href="../Design/jquery-ui.min.css">
+	<link type="text/css" rel="stylesheet" href="../Design/default.css">
+	<link type="text/css" rel="stylesheet" href="../Design/swiper.min.css">
+	<link type="text/css" rel="stylesheet" href="../Design/style_member.css">
+	<link type="text/css" rel="stylesheet" href="../Design/style.css">
 	
 	<!-- <link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> -->
-	<link href="./이밥차 (2,000원으로 밥상차리기)_files/smart_editor2.css" rel="stylesheet" type="text/css">
+	<link href="../Design/smart_editor2.css" rel="stylesheet" type="text/css">
 
 	<!-- <script type="text/javascript" src="//test-pay.naver.com/customer/js/naverPayButton.js" charset="UTF-8"></script> -->
 	<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
 	<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.js"></script> -->
-	<script async="" src="./이밥차 (2,000원으로 밥상차리기)_files/analytics.js.다운로드"></script><script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/jquery-1.12.2.min.js.다운로드"></script>
+	<script async="" src="../Design/analytics.js.다운로드"></script><script type="text/javascript" src="../Design/jquery-1.12.2.min.js.다운로드"></script>
 	<!-- <script type="text/javascript" src="//code.jquery.com/ui/1.10.2/jquery-ui.js"></script> -->
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/jquery-ui.min.js.다운로드"></script>
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/HuskyEZCreator.js.다운로드" charset="utf-8"></script>
-	<script src="./이밥차 (2,000원으로 밥상차리기)_files/kakao.min.js.다운로드"></script>
+	<script type="text/javascript" src="../Design/jquery-ui.min.js.다운로드"></script>
+	<script type="text/javascript" src="../Design/HuskyEZCreator.js.다운로드" charset="utf-8"></script>
+	<script src="../Design/kakao.min.js.다운로드"></script>
 	<meta property="og:image:width" content="600">
 	<meta property="og:image:height" content="600">
 
 
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/modernizr.custom.79639.js.다운로드"></script>
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/common.js.다운로드"></script>
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/jquery.gnb.js.다운로드"></script>
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/HuskyEZCreator.js.다운로드" charset="utf-8"></script>
-	<script type="text/javascript" src="./이밥차 (2,000원으로 밥상차리기)_files/jquery.blockUI.js.다운로드"></script>
+	<script type="text/javascript" src="../Design/modernizr.custom.79639.js.다운로드"></script>
+	<script type="text/javascript" src="../Design/common.js.다운로드"></script>
+	<script type="text/javascript" src="../Design/jquery.gnb.js.다운로드"></script>
+	<script type="text/javascript" src="../Design/HuskyEZCreator.js.다운로드" charset="utf-8"></script>
+	<script type="text/javascript" src="../Design/jquery.blockUI.js.다운로드"></script>
 	<!-- <script src="/skin/nodskin_argio/common/swiper.min.js"></script> -->
-	<script src="./이밥차 (2,000원으로 밥상차리기)_files/jquery.bxslider.min.js.다운로드"></script>
-	<script src="./이밥차 (2,000원으로 밥상차리기)_files/common.js(1).다운로드"></script>
+	<script src="../Design/jquery.bxslider.min.js.다운로드"></script>
+	<script src="../Design/common.js(1).다운로드"></script>
 	
     <meta name="google-site-verification" content="ubyJjfD52yOaMDqfCsgc_Yom1haFN5KgwuKsuEd2sDE">
     

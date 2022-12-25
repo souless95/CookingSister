@@ -22,6 +22,7 @@ if (memberDTO.getId() != null) {
 	session.setAttribute("UserName", memberDTO.getUserName());
 	//그리고 로그인 페이지로 '이동'한다.
 	response.sendRedirect("LoginForm.jsp");
+/* 	response.sendRedirect("../02Main/Main.jsp"); */
 }
 else{
 	//로그인에 실패한 경우라면...
