@@ -3,17 +3,16 @@ package board;
 public class BoardDTO {
 	
 	private int idx;
-	private String b_flag;
+	private String b_flag; // 회원게시판 : f_member , 레시피게시판 : f_recipe
 	private String category;
 	private String boardTitle;
 	private String boardContent;
-	private String ofile1;
-	private String nfile1;
-	private String ofile2;
-	private String nfile2;
+	private String ofile;
+	private String nfile;
 	private String userName;
 	private int visitCount;
 	private java.sql.Date regidate;
+	private String id;
 	
 	
 	public int getIdx() {
@@ -46,30 +45,6 @@ public class BoardDTO {
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-	public String getOfile1() {
-		return ofile1;
-	}
-	public void setOfile1(String ofile1) {
-		this.ofile1 = ofile1;
-	}
-	public String getNfile1() {
-		return nfile1;
-	}
-	public void setNfile1(String nfile1) {
-		this.nfile1 = nfile1;
-	}
-	public String getOfile2() {
-		return ofile2;
-	}
-	public void setOfile2(String ofile2) {
-		this.ofile2 = ofile2;
-	}
-	public String getNfile2() {
-		return nfile2;
-	}
-	public void setNfile2(String nfile2) {
-		this.nfile2 = nfile2;
-	}
 	public String getUserName() {
 		return userName;
 	}
@@ -88,5 +63,25 @@ public class BoardDTO {
 	public void setRegidate(java.sql.Date regidate) {
 		this.regidate = regidate;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getOfile() {
+		return ofile;
+	}
+	public void setOfile(String ofile) {
+		this.ofile = ofile;
+	}
+	public String getNfile() {
+		return nfile;
+	}
+	public void setNfile(String nfile) {
+		this.nfile = nfile;
+	}
+	
+	
 	
 }

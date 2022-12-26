@@ -28,7 +28,7 @@ if (memberDTO.getId() != null) {
 		CookieManager.deleteCookie(response, "loginId");
 	}  
 	
- 	response.sendRedirect("LoginForm.jsp");
+ 	response.sendRedirect("../02Main/Main.jsp");
 /* 	response.sendRedirect("../02Main/Main.jsp"); */
 }
 else{

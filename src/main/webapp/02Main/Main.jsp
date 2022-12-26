@@ -4,8 +4,6 @@
 <!-- saved from url=(0019)https://2bob.co.kr/ -->
 <html style="" class=" js no-touch csstransitions"><head>
 <%@ include file ="../Common/style.jsp" %>
-	<title>이밥차 (2,000원으로 밥상차리기)</title>
-    <title></title>
 	<script type="Text/JavaScript">
 		function Hide_Popup(idx)
 		{
