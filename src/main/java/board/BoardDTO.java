@@ -4,7 +4,6 @@ public class BoardDTO {
 	
 	private int idx;
 	private String b_flag; // 회원게시판 : f_member , 레시피게시판 : f_recipe
-	private String category;
 	private String boardTitle;
 	private String boardContent;
 	private String ofile;
@@ -26,12 +25,6 @@ public class BoardDTO {
 	}
 	public void setB_flag(String b_flag) {
 		this.b_flag = b_flag;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
 	}
 	public String getBoardTitle() {
 		return boardTitle;

@@ -1,11 +1,13 @@
 package recipe;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
 import common.JDBConnect;
+import movie.MovieDTO;
 
 public class RecipeDAO extends JDBConnect {
 
@@ -13,7 +15,71 @@ public class RecipeDAO extends JDBConnect {
 		super(application);
 	}
 	
-	public List<RecipeDTO> selectList() {
+	public int insertRecipe(RecipeDTO dto) {
+		int result = 0;
+		try {
+			String query = "INSERT INTO recipe ( "
+					+ " rName, rOfile, rNfile, rTitle, rContent, rContentOfile"
+					+ ", rContentNfile, rMust, rSeason) "
+					+ " VALUES ( "
+					+ " ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getrName());
+			psmt.setString(2, dto.getrOfile());
+			psmt.setString(3, dto.getrNfile());
+			psmt.setString(4, dto.getrTitle());
+			psmt.setString(5, dto.getrContent());
+			psmt.setString(6, dto.getrContentOfile());
+			psmt.setString(7, dto.getrContentNfile());
+			psmt.setString(8, dto.getrMust());
+			psmt.setString(9, dto.getrSeason());
+			
+			result = psmt.executeUpdate();		
+		}
+		catch (Exception e) {
+			System.out.println("레시피 INSERT 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int selectCount(String searchWord) {
+		
+		//결과(게시물 수)를 담을 변수
+		int totalCount = 0;
+		
+		//게시물 수를 얻어오는 쿼리문 작성
+		String query = "SELECT COUNT(*) FROM board ";
+		//검색어가 있는 경우 where절을 추가하여 조건에 맞는 게시물만
+		//추출한다.
+		
+		 if (searchWord != null) {
+			 query += " WHERE rName LIKE '%?%' ";
+		 }
+		
+		try {
+			//정적쿼리문 실행을 위한 Statement객체 생성
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, searchWord);
+			rs = psmt.executeQuery();
+			
+			//커서를 첫번째 행으로 이동하여 레코드를 읽는다.
+			rs.next();
+			//첫번째 컬럼의 값을 가져와서 변수에 저장한다. 
+			totalCount = rs.getInt(1);
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 수를 구하는 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return totalCount;
+	}
+	
+	//작성한 게시물을 반환한다. 특히 반환값은 여러개의 레코드를
+	//반환할 수 있으므로 List컬렉션을 반환타입으로 정의한다. 
+	public List<RecipeDTO> selectList(String searchWord) {
 		
 		//List계열의 컬렉션을 생성한다. 이때 타입 매개변수는
 		//BoardDTO객체로 설정한다.
@@ -22,26 +88,35 @@ public class RecipeDAO extends JDBConnect {
 		List<RecipeDTO> bbs = new Vector<RecipeDTO>();
 		
 		//레코드 추출을 위한 select쿼리문 작성
-		String query = "SELECT * FROM recipe WHERE b_flag=? ORDER BY idx DESC ";
+		String query = "SELECT * FROM recipe ";
+		//검색어가 있는 경우 where절을 추가하여 조건에 맞는 게시물만
+		//추출한다.
+		
+		 if (searchWord != null) {
+			 query += " WHERE rName LIKE '%?%' ";
+		 }
+		//최근게시물을 상단에 노출하기 위해 내림차순으로 정렬한다.
+		query += "ORDER BY idx DESC ";
 		
 		try {
-			
+			//쿼리실행 및 결과값 반환
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, b_flag);
+			psmt.setString(1, searchWord);
 			rs = psmt.executeQuery();
+			//2개 이상의 레코드가 반환될수 있으므로 while문을 사용
+			//갯수만큼 반복하게 된다.
 			while(rs.next()) {
-				
+				//하나의 레코드를 저장할 수 있는 DTO객체를 생성
 				RecipeDTO dto = new RecipeDTO();
 				
+				//setter()를 이용해서 각 컬럼의 값을 저장
 				dto.setIdx(rs.getInt("idx"));
-				dto.setB_flag(rs.getString("b_flag"));
-				dto.setBoardTitle(rs.getString("boardTitle"));
-				dto.setBoardContent(rs.getString("boardContent"));
-				dto.setUserName(rs.getString("userName"));
-				dto.setRegidate(rs.getDate("regidate"));
-				dto.setOfile("ofile");
-				dto.setNfile("nfile");
+				dto.setrTitle(rs.getString("rTitle"));
+				dto.setrName(rs.getString("rName"));
+				dto.setrOfile(rs.getString("rOfile"));
+				dto.setrNfile(rs.getString("rNfile"));
 				
+				//List컬렉션에 DTO객체를 추가한다. 
 				bbs.add(dto);
 			}
 

@@ -3,15 +3,16 @@ package recipe;
 public class RecipeDTO {
 	
 	private int idx;
-	private String recipeName;
-	private String recipeImg;
-	private String recipeTitle;
-	private String recipeContent;
-	private String recipeContentImg;
-	private String recipeMust;
-	private String recipeSeason;
+	private String rName;
+	private String rOfile;
+	private String rNfile;
+	private String rTitle;
+	private String rContent;
+	private String rContentOfile;
+	private String rContentNfile;
+	private String rMust;
+	private String rSeason;
 	private java.sql.Date regidate;
-	
 	
 	public int getIdx() {
 		return idx;
@@ -19,47 +20,59 @@ public class RecipeDTO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getRecipeName() {
-		return recipeName;
+	public String getrName() {
+		return rName;
 	}
-	public void setRecipeName(String recipeName) {
-		this.recipeName = recipeName;
+	public void setrName(String rName) {
+		this.rName = rName;
 	}
-	public String getRecipeImg() {
-		return recipeImg;
+	public String getrOfile() {
+		return rOfile;
 	}
-	public void setRecipeImg(String recipeImg) {
-		this.recipeImg = recipeImg;
+	public void setrOfile(String rOfile) {
+		this.rOfile = rOfile;
 	}
-	public String getRecipeTitle() {
-		return recipeTitle;
+	public String getrNfile() {
+		return rNfile;
 	}
-	public void setRecipeTitle(String recipeTitle) {
-		this.recipeTitle = recipeTitle;
+	public void setrNfile(String rNfile) {
+		this.rNfile = rNfile;
 	}
-	public String getRecipeContent() {
-		return recipeContent;
+	public String getrTitle() {
+		return rTitle;
 	}
-	public void setRecipeContent(String recipeContent) {
-		this.recipeContent = recipeContent;
+	public void setrTitle(String rTitle) {
+		this.rTitle = rTitle;
 	}
-	public String getRecipeContentImg() {
-		return recipeContentImg;
+	public String getrContent() {
+		return rContent;
 	}
-	public void setRecipeContentImg(String recipeContentImg) {
-		this.recipeContentImg = recipeContentImg;
+	public void setrContent(String rContent) {
+		this.rContent = rContent;
 	}
-	public String getRecipeMust() {
-		return recipeMust;
+	public String getrContentOfile() {
+		return rContentOfile;
 	}
-	public void setRecipeMust(String recipeMust) {
-		this.recipeMust = recipeMust;
+	public void setrContentOfile(String rContentOfile) {
+		this.rContentOfile = rContentOfile;
 	}
-	public String getRecipeSeason() {
-		return recipeSeason;
+	public String getrContentNfile() {
+		return rContentNfile;
 	}
-	public void setRecipeSeason(String recipeSeason) {
-		this.recipeSeason = recipeSeason;
+	public void setrContentNfile(String rContentNfile) {
+		this.rContentNfile = rContentNfile;
+	}
+	public String getrMust() {
+		return rMust;
+	}
+	public void setrMust(String rMust) {
+		this.rMust = rMust;
+	}
+	public String getrSeason() {
+		return rSeason;
+	}
+	public void setrSeason(String rSeason) {
+		this.rSeason = rSeason;
 	}
 	public java.sql.Date getRegidate() {
 		return regidate;
@@ -67,7 +80,5 @@ public class RecipeDTO {
 	public void setRegidate(java.sql.Date regidate) {
 		this.regidate = regidate;
 	}
-	
-	
 	
 }

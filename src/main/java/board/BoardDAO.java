@@ -66,8 +66,8 @@ public class BoardDAO extends JDBConnect {
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setUserName(rs.getString("userName"));
 				dto.setRegidate(rs.getDate("regidate"));
-				dto.setOfile("ofile");
-				dto.setNfile("nfile");
+				dto.setOfile(rs.getString("ofile"));
+				dto.setNfile(rs.getString("nfile"));
 				
 				bbs.add(dto);
 			}
@@ -100,7 +100,7 @@ public class BoardDAO extends JDBConnect {
 
 			if (rs.next()) {
 				dto.setB_flag(rs.getString("b_flag"));
-				dto.setIdx(rs.getInt(idx));
+				dto.setIdx(rs.getInt("idx"));
 				dto.setCategory(rs.getString("category"));
 				dto.setBoardTitle(rs.getString("boardTitle"));
 				dto.setBoardContent(rs.getString("boardContent"));
