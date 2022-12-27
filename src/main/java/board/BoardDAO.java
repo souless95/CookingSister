@@ -101,7 +101,6 @@ public class BoardDAO extends JDBConnect {
 			if (rs.next()) {
 				dto.setB_flag(rs.getString("b_flag"));
 				dto.setIdx(rs.getInt("idx"));
-				dto.setCategory(rs.getString("category"));
 				dto.setBoardTitle(rs.getString("boardTitle"));
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setOfile(rs.getString("ofile"));

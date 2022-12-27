@@ -7,7 +7,6 @@ import java.util.Vector;
 import javax.servlet.ServletContext;
 
 import common.JDBConnect;
-import movie.MovieDTO;
 
 public class RecipeDAO extends JDBConnect {
 
@@ -50,7 +49,7 @@ public class RecipeDAO extends JDBConnect {
 		int totalCount = 0;
 		
 		//게시물 수를 얻어오는 쿼리문 작성
-		String query = "SELECT COUNT(*) FROM board ";
+		String query = "SELECT COUNT(*) FROM recipe ";
 		//검색어가 있는 경우 where절을 추가하여 조건에 맞는 게시물만
 		//추출한다.
 		
@@ -130,34 +129,31 @@ public class RecipeDAO extends JDBConnect {
 	}
 	
 	
-	public RecipeDTO selectView(String b_flag, int idx) {
+	public RecipeDTO selectView(int idx) {
 		
 		RecipeDTO dto = new RecipeDTO();
 		
-		String query = "SELECT B.*, M.id "
-				+ " FROM board B INNER JOIN member M "
-				+ " ON B.userName=M.userName "
-				+ " WHERE b_flag=? AND idx=?";
-		
+		String query = "SELECT * FROM recipe "
+				+ " WHERE idx=?";
 		
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, b_flag);
-			psmt.setInt(2, idx);
+			psmt.setInt(1, idx);
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setB_flag(rs.getString("b_flag"));
-				dto.setIdx(rs.getInt(idx));
-				dto.setCategory(rs.getString("category"));
-				dto.setBoardTitle(rs.getString("boardTitle"));
-				dto.setBoardContent(rs.getString("boardContent"));
-				dto.setOfile(rs.getString("ofile"));
-				dto.setNfile(rs.getString("nfile"));
-				dto.setUserName(rs.getString("userName"));
-				dto.setVisitCount(rs.getInt("visitCount"));
+				dto.setIdx(rs.getInt("idx"));
+				dto.setrName(rs.getString("rName"));
+				dto.setrOfile(rs.getString("rOfile"));
+				dto.setrNfile(rs.getString("rNfile"));
+				dto.setrTitle(rs.getString("rTitle"));
+				dto.setrContent(rs.getString("rContent"));
+				dto.setrContentOfile(rs.getString("rContentOfile"));
+				dto.setrContentNfile(rs.getString("rContentNfile"));
+				dto.setrMust(rs.getString("rMust"));
+				dto.setrSeason(rs.getString("rSeason"));
+				dto.setrVisitCount(rs.getInt("rVisitCount"));
 				dto.setRegidate(rs.getDate("regidate"));
-				dto.setId(rs.getString("id"));
 			}
 		} 
 		catch (Exception e) {
@@ -166,5 +162,85 @@ public class RecipeDAO extends JDBConnect {
 		}
 		
 		return dto;
+	}
+	
+	public void updateVisitCount(int idx) {
+		
+		String query = "UPDATE recipe SET "
+				+ " rVisitCount=rVisitCount+1 "
+				+ " WHERE idx=? ";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, idx);
+			rs = psmt.executeQuery();
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 조회수 증가 중 예외 발생");
+			e.printStackTrace();
+		}
+	}
+	
+	public List<RecipeDTO> selectNewest() {
+		
+		List<RecipeDTO> bbs = new Vector<RecipeDTO>();
+		
+		String query = "SELECT * FROM recipe "
+				+ " ORDER BY regidate DESC "
+				+ " LIMIT 5";
+		
+		try {
+			stmt = con.createStatement();
+			stmt.executeQuery(query);
+			while(rs.next()) {
+				RecipeDTO dto = new RecipeDTO();
+				
+				dto.setIdx(rs.getInt("idx"));
+				dto.setrTitle(rs.getString("rTitle"));
+				dto.setrName(rs.getString("rName"));
+				dto.setrOfile(rs.getString("rOfile"));
+				dto.setrNfile(rs.getString("rNfile"));
+				
+				bbs.add(dto);
+			}
+
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return bbs;
+	}
+
+public List<RecipeDTO> selecVisitList() {
+		
+		List<RecipeDTO> bbs = new Vector<RecipeDTO>();
+		
+		String query = "SELECT * FROM recipe "
+				+ " ORDER BY rVisitCount DESC "
+				+ " LIMIT 5";
+		
+		try {
+			stmt = con.createStatement();
+			stmt.executeQuery(query);
+			while(rs.next()) {
+				RecipeDTO dto = new RecipeDTO();
+				
+				dto.setIdx(rs.getInt("idx"));
+				dto.setrTitle(rs.getString("rTitle"));
+				dto.setrName(rs.getString("rName"));
+				dto.setrOfile(rs.getString("rOfile"));
+				dto.setrNfile(rs.getString("rNfile"));
+				
+				bbs.add(dto);
+			}
+
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return bbs;
 	}
 }

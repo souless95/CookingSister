@@ -12,6 +12,7 @@ public class RecipeDTO {
 	private String rContentNfile;
 	private String rMust;
 	private String rSeason;
+	private int rVisitCount;
 	private java.sql.Date regidate;
 	
 	public int getIdx() {
@@ -79,6 +80,12 @@ public class RecipeDTO {
 	}
 	public void setRegidate(java.sql.Date regidate) {
 		this.regidate = regidate;
+	}
+	public int getrVisitCount() {
+		return rVisitCount;
+	}
+	public void setrVisitCount(int rVisitCount) {
+		this.rVisitCount = rVisitCount;
 	}
 	
 }

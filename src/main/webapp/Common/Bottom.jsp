@@ -8,8 +8,8 @@
 			    style="width: 80px;" alt="밥누나 copyright">
 			</div>
 			<div class="col-lg-10 copy_info text-left mt-3" style="font-size: 12px;">
-				<a href="xxx" style="font-weight:bold;">오시는길</a> &nbsp;&nbsp;
-				<a href="xxx" style="font-weight:bold;">고객센터</a> 
+				<a href="../02Main/Address.jsp" style="font-weight:bold;">오시는길</a> &nbsp;&nbsp;
+				<a href="../05.CustomerCenter/List.jsp" style="font-weight:bold;">고객센터</a> 
 				<br><br>
 			    (주)밥안사주는 못된 누나(153-759) &nbsp;&nbsp;
 			    서울시 종로구 관철동 &nbsp;&nbsp;
