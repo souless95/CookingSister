@@ -18,15 +18,19 @@
 		MultipartRequest mr = new MultipartRequest(request, fileDir,
 	            maxPostSize, encoding);			
 		
+		
 		String oFile = mr.getFilesystemName("rFile");
+		String nFile = "";
+		
+		if(oFile != null) {
 		String ext = oFile.substring(oFile.lastIndexOf("."));
 		String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-		String nFile = now + ext;
+		nFile = now + ext;
 		
 		File oldFile = new File(fileDir + File.separator + oFile);
 		File newFile = new File(fileDir + File.separator + nFile);
 		oldFile.renameTo(newFile);
-		
+		}	
 		
  		String b_flag = mr.getParameter("b_flag");
  		String boardTitle = mr.getParameter("rTitle");
@@ -45,7 +49,16 @@
 		
 		BoardDAO dao = new BoardDAO(application);
 		
+		int iResult = 0;
+		for (int i=1; i<=100; i++){
+			//제목에 증가하는 변수 ifmf 붙여 1~100까지를 추가한다.
+			dto.setBoardTitle(boardTitle+"-"+i);
+			//insert 쿼리문 반복 실행
+			iResult = dao.insertMBoard(dto);
+		}
+		
 		dao.insertMBoard(dto);
+		
 		dao.close();
 		
 		request.getRequestDispatcher("List.jsp");

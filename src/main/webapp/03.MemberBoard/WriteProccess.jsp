@@ -19,14 +19,17 @@
 	            maxPostSize, encoding);			
 		
 		String oFile = mr.getFilesystemName("rFile");
-		String ext = oFile.substring(oFile.lastIndexOf("."));
-		String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-		String nFile = now + ext;
+		String nFile = "";
 		
-		File oldFile = new File(fileDir + File.separator + oFile);
-		File newFile = new File(fileDir + File.separator + nFile);
-		oldFile.renameTo(newFile);
-		
+		if(oFile != null) {
+			String ext = oFile.substring(oFile.lastIndexOf("."));
+			String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
+			nFile = now + ext;
+			
+			File oldFile = new File(fileDir + File.separator + oFile);
+			File newFile = new File(fileDir + File.separator + nFile);
+			oldFile.renameTo(newFile);
+		}
 		
  		String b_flag = mr.getParameter("b_flag");
  		String boardTitle = mr.getParameter("rTitle");
@@ -38,7 +41,7 @@
 				
 		dto.setB_flag(b_flag);
 		dto.setBoardTitle(boardTitle);
-		dto.setBoardContent(boardContent);
+		dto.setBoardContent(boardContent);		
 		dto.setOfile(oFile);
 		dto.setNfile(nFile);
 		dto.setUserName(userName);
@@ -48,7 +51,7 @@
 		dao.insertMBoard(dto);
 		dao.close();
 		
-		request.getRequestDispatcher("List.jsp");
+		response.sendRedirect("List.jsp");
 	}
 	catch (Exception e) {
 		e.printStackTrace();

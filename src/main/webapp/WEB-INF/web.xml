@@ -96,7 +96,7 @@
 	<!-- 한 페이지에 출력할 게시물의 갯수 설정 : 10개씩 출력 -->
 	<context-param>
 		<param-name>POSTS_PER_PAGE</param-name>
-		<param-value>2</param-value>
+		<param-value>10</param-value>
 	</context-param>
 	<!-- 한 블럭당 출력할 페이지번호의 갯수 설정 : 5페이지씩 출력 -->
 	<context-param>
@@ -179,9 +179,9 @@
     <servlet-name>MVCBoardWrite</servlet-name>
     <url-pattern>/mvcboard/write.do</url-pattern>
   </servlet-mapping>
-  <!-- 파일첨부시 제한용량은 1메가로 지정한다. -->
+  <!-- 파일 첨부 용량 10메가 제한 -->
   <context-param>
   	<param-name>maxPostSize</param-name>
-  	<param-value>1024000</param-value>
+  	<param-value>10485760</param-value>
   </context-param>
 </web-app>

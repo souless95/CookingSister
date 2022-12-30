@@ -28,9 +28,10 @@
 	oldFile.renameTo(newFile);
 	
 	
-	int idx = Integer.parseInt(request.getParameter("idx"));
-	String boardTitle = request.getParameter("rTitle");
-	String boardContent = request.getParameter("rContent");
+	int idx = Integer.parseInt(mr.getParameter("idx"));
+	String boardTitle = mr.getParameter("rTitle");
+	String boardContent = mr.getParameter("rContent");
+	String b_flag = mr.getParameter("b_flag");
 
 	
 	BoardDTO dto = new BoardDTO();
@@ -52,7 +53,7 @@
 		수정이 완료되었으면 수정된 내용을 확인하기 위해 주로 내용보기
 		페이지로 이동한다.
 		*/
-		response.sendRedirect("View.jsp?idx=" + dto.getIdx());
+		response.sendRedirect("View.jsp?b_flag="+ b_flag + "&idx=" + idx);
 	}
 	else {
 		//수정에 실패하면 뒤로 이동한다.

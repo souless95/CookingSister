@@ -8,8 +8,7 @@
 </head>
 <body>
    <%@ include file="../Common/Top.jsp"%>
-   <!-- 지도를 표시할 div 입니다 -->
-
+    <!-- 지도를 표시할 div 입니다 -->
    <div id="camp_02" class="clearfix">
       <div class="sec1 sec_dvd">
          <div class="container">
@@ -24,13 +23,13 @@
                      <div class="map_box" align="center">
                         <div id="map" style="width: 800px; height: 500px;"></div>
                         <script type="text/javascript"
-                           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=95b89029664c9af07ae2349b521c6de2"></script>
+                           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a564718858956849162754777f734eb8"></script>
                         <script>
                            var mapContainer = document
                                  .getElementById('map'), // 지도를 표시할 div 
                            mapOption = {
                               center : new kakao.maps.LatLng(
-                            		  523954.0, 1084098.0), // 지도의 중심좌표
+                            		  37.6359060, 126.8699738), // 지도의 중심좌표
                               level : 3
                            // 지도의 확대 레벨
                            };
@@ -41,7 +40,7 @@
 
                            //마커가 표시될 위치입니다 
                            var markerPosition = new kakao.maps.LatLng(
-                        		   523954.0, 1084098.0);
+                        		   37.6359060, 126.8699738);
 
                            // 마커를 생성합니다
                            var marker = new kakao.maps.Marker({
@@ -72,41 +71,11 @@
                         <span class="font-weight-bold f_pop">TEL.</span> 02-123-4567
                      </h5>
                   </li>
-
-               </ul>
-            </div>
-            <div class="map_txt">
-               <h4 class="dft mb-none font-weight-bold">자동차로 오시는 길</h4>
-               <ul class="list-unstyled mb-none clearfix road_wrp">
-                  <li class="">
-                     <h5 class="dft mb-none font-weight-semibold">네비게이션 이용시</h5>
-                     <p class="dft mb-none font-weight-light">
-                        해당 주소로 검색하시기 바랍니다. <span class="font-weight-bold">[서울특별시
-                           종로구 번지 3호 4 KR 서울특별시 종로구 관철동 180 5 층]</span>
-                     </p>
-                  </li>
-               </ul>
-
-
-
-
-            </div>
-            <div class="map_txt map_txt2 pb-none">
-               <h4 class="dft mb-none font-weight-bold">대중교통으로 오시는 길</h4>
-               <ul class="list-unstyled mb-none clearfix road_wrp">
-                  <li class="">
-                     <h5 class="dft mb-none font-weight-semibold">지하철 이용</h5>
-                     <p class="dft mb-none font-weight-light">1호선 종각역에서 하차 → 지도보고
-                        잘 찾아오세요~^^</p>
-                  </li>
-
                </ul>
             </div>
          </div>
       </div>
    </div>
-
-
-   <%@ include file="../Common/Bottom.jsp"%>
+   <%@ include file="../Common/Bottom.jsp" %>
 </body>
 </html>

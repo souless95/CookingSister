@@ -21,13 +21,13 @@ dao.close();
 <html>
 <head>
 <%@ include file="../Common/style.jsp"%>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function searchView(){
 		var sResult = document.getElementById("sResult");
 		
 		sResult.style.display = "";
 	}
-</script>
+</script> -->
 </head>
 <body>
 	<%@ include file="../Common/Top.jsp"%>
@@ -36,10 +36,18 @@ dao.close();
 		<div class="search_top">
 			<form method="get">
 				<div class="search_box">
-					<input type="text" id="searchWord" name="searchWord" maxlength="20" style="float:left;">
-					<input type="image" src="../Design/icon_search_btn.jpg" onclick="searchView();" alt="검색" style="width:45px;">
+					<input type="text" id="searchWord" name="searchWord" maxlength="20" style="float:;">
+					<input type="image" src="../Design/icon_search_btn.jpg"  alt="검색" style="width:45px; margin-left:-10px;">
 				</div>
 			</form>
+					<%
+						if (session.getAttribute("UserId") != null && session.getAttribute("UserId").equals("admin")) {		
+					%>
+					<a href="Regist.jsp"><input type="image"
+						src="../Images/btn_bbs_comp.jpg" alt="" align="right"></a>
+					<%
+						}
+					%>
 			
 			<!-- form 전송되면 안보이는데 어케 할지 생각 필요 -->
 			<div class="text_box" id="sResult" style="display:none;">
@@ -53,15 +61,15 @@ dao.close();
 				<%
 				if (recipeLists.isEmpty()) {
 				%>
-				<tr>
-					<td colspan="5" align="center">게시물이 없습니다</td>
-				</tr>
+				<li>
+					<span align="center">이럴수가 게시물이 없습니다</span>
+				</li>
 				<%
 				} 
 				else {
 				for (RecipeDTO dto : recipeLists) {
 				%>
-				<li><a href="View.jsp?idx=<%=dto.getIdx()%>">
+				<li style="width:19%" ><a href="View.jsp?idx=<%=dto.getIdx()%>">
 						<div class="img_wrap">
 							<img src="../Images/Recipes/<%=dto.getrNfile()%>" alt=""
 								style="width: 100%">

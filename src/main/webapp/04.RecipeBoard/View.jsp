@@ -26,10 +26,10 @@ dao.close();
 	<div class="recipe_contian">
 		<div class="contain" style="height: auto !important;">
 			<div class="rec_view_top clr">
-				<div class="fl rec_view_img">
+				<div class="fl rec_view_img" style="width:35%;">
 					<img alt="" src="../Images/Recipes/<%= dto.getrNfile() %>">
 				</div>
-				<div class="fr rec_info">
+				<div class="fr rec_info" style="width:35%;">
 					<div class="rec_exp">
 						<h2 class="prod_title"><%= dto.getrName() %></h2>
 						<p class="s_title"><%= dto.getrTitle() %></p>
@@ -56,7 +56,7 @@ dao.close();
 			<%
 			if (dto.getrContentOfile()!=null){									
 			%>
-            	<img alt="" src="../Images/Recipes/<%= dto.getrContentNfile() %>">
+            	<img style="width:70%;" alt="" src="../Images/Recipes/<%= dto.getrContentNfile() %>">
 			<%								
 			}
 			%>

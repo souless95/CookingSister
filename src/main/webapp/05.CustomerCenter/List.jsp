@@ -1,3 +1,4 @@
+<%@page import="utils.BoardPage"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="board.BoardDAO"%>
@@ -8,8 +9,23 @@ BoardDAO dao = new BoardDAO(application);
 
 String b_flag = "f_customer";
 
-List<BoardDTO> boardLists = dao.selectList(b_flag);
-//자원해제
+int totalCount = dao.selectCount(b_flag);
+
+int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+
+int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+int pageNum = 1;
+String pageTemp = request.getParameter("pageNum");
+if (pageTemp != null && !pageTemp.equals(""))
+	pageNum = Integer.parseInt(pageTemp);
+
+int start = (pageNum - 1) * pageSize + 1;
+int end = pageNum * pageSize;
+
+List<BoardDTO> boardLists = dao.selectList(b_flag, start, end);
+
 dao.close();
 %>
 <!DOCTYPE html>
@@ -59,8 +75,17 @@ dao.close();
 				%>
 			</table>
 		</form>
+		<div>
+			<%=BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI())%>
+		</div>
+		<%
+			if (session.getAttribute("UserId") != null && session.getAttribute("UserId").equals("admin")) {		
+		%>
 		<a href="Write.jsp"><input type="image"
 			src="../Images/btn_write.jpg" alt="" align="right"></a>
+		<%
+			}
+		%>
 	</div>
 	<br>
 	<br>

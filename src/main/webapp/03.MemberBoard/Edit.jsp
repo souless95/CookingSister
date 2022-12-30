@@ -39,7 +39,7 @@ dao.close();
 				<form action="EditProccess.jsp" method="post" enctype="multipart/form-data" id="rBoardFrm">
 					<input type="hidden" name="b_flag" value="<%= dto.getB_flag() %>">
 					<input type="hidden" name="userName" value="<%= session.getAttribute("UserName")%>">
-					<input type="hidden" name="idx" value="<%= dto.getIdx() %>" />
+					<input type="hidden" name="idx" value="<%=dto.getIdx()%>" />
 					<table cellspacing="0" summary="게시글 수정양식">
 						<colgroup>
 							<col width="120px">

@@ -92,10 +92,13 @@ public class RecipeDAO extends JDBConnect {
 		//추출한다.
 		
 		 if (searchWord != null) {
-			 query += " WHERE rName LIKE '%?%' ";
+			 //query += " WHERE rName LIKE '%'||?||'%' ";
+			 query += " WHERE rName LIKE '%"+searchWord+"%' ";
 		 }
 		//최근게시물을 상단에 노출하기 위해 내림차순으로 정렬한다.
 		query += "ORDER BY idx DESC ";
+		
+		System.out.println(query);
 		
 		try {
 			//쿼리실행 및 결과값 반환
@@ -117,6 +120,12 @@ public class RecipeDAO extends JDBConnect {
 				
 				//List컬렉션에 DTO객체를 추가한다. 
 				bbs.add(dto);
+			}
+			
+			for (RecipeDTO rDto : bbs) {
+				
+				System.out.println(rDto.getrName());
+			
 			}
 
 		} 
@@ -190,7 +199,7 @@ public class RecipeDAO extends JDBConnect {
 		
 		try {
 			stmt = con.createStatement();
-			stmt.executeQuery(query);
+			rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				RecipeDTO dto = new RecipeDTO();
 				
@@ -222,7 +231,7 @@ public List<RecipeDTO> selecVisitList() {
 		
 		try {
 			stmt = con.createStatement();
-			stmt.executeQuery(query);
+			rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				RecipeDTO dto = new RecipeDTO();
 				

@@ -3,9 +3,9 @@
 <div id="footer">
 	<div class="contain">
 		<div class="row copyright">
-			<div class="col-lg-2 copy_logo mt-3" style="float: left;">
-			    <img src="../Images/logo.JPG"
-			    style="width: 80px;" alt="밥누나 copyright">
+			<div class="col-lg-2 copy_logo mt-3">
+			    <img src="../Images/bottom_logo.png"
+			    style="width: 110px;" alt="밥누나 copyright">
 			</div>
 			<div class="col-lg-10 copy_info text-left mt-3" style="font-size: 12px;">
 				<a href="../02Main/Address.jsp" style="font-weight:bold;">오시는길</a> &nbsp;&nbsp;

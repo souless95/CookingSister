@@ -85,9 +85,9 @@ dao.close();
 							<%
 							for (RecipeDTO dto : newestLists) {
 							%>
-							<li><a
+							<li style="width:19%"><a
 								href="../04.RecipeBoard/View.jsp?idx=<%= dto.getIdx() %>">
-									<div class="img_wrap">
+									<div class="img_wrap" style="margin-bottom:10px;">
 										<img
 											src="../Images/Recipes/<%=dto.getrNfile()%>"
 											alt="" style="width: 100%">
@@ -116,9 +116,9 @@ dao.close();
 							<%
 							for (RecipeDTO dto : visitLists) {
 							%>
-							<li><a
+							<li style="width:19%"><a
 								href="../04.RecipeBoard/View.jsp?idx=<%= dto.getIdx() %>">
-									<div class="img_wrap">
+									<div class="img_wrap" style="margin-bottom:10px;">
 										<img
 											src="../Images/Recipes/<%=dto.getrNfile()%>"
 											alt="" style="width: 100%">

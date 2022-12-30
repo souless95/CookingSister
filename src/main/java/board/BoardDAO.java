@@ -40,7 +40,7 @@ public class BoardDAO extends JDBConnect {
 		return result;
 	}
 	
-	public List<BoardDTO> selectList(String b_flag) {
+	public List<BoardDTO> selectList(String b_flag,int start, int end) {
 		
 		//List계열의 컬렉션을 생성한다. 이때 타입 매개변수는
 		//BoardDTO객체로 설정한다.
@@ -49,12 +49,16 @@ public class BoardDAO extends JDBConnect {
 		List<BoardDTO> bbs = new Vector<BoardDTO>();
 		
 		//레코드 추출을 위한 select쿼리문 작성
-		String query = "SELECT * FROM board WHERE b_flag=? ORDER BY idx DESC ";
+		String query = "SELECT * FROM board WHERE b_flag=? "
+				+ " ORDER BY idx DESC "
+				+ " LIMIT ? , ?";
 		
 		try {
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, b_flag);
+			psmt.setInt(2, start);
+			psmt.setInt(3, end);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				
@@ -68,6 +72,7 @@ public class BoardDAO extends JDBConnect {
 				dto.setRegidate(rs.getDate("regidate"));
 				dto.setOfile(rs.getString("ofile"));
 				dto.setNfile(rs.getString("nfile"));
+				dto.setVisitCount(rs.getInt("visitCount"));
 				
 				bbs.add(dto);
 			}
@@ -97,6 +102,7 @@ public class BoardDAO extends JDBConnect {
 			psmt.setString(1, b_flag);
 			psmt.setInt(2, idx);
 			rs = psmt.executeQuery();
+			
 
 			if (rs.next()) {
 				dto.setB_flag(rs.getString("b_flag"));
@@ -142,7 +148,7 @@ public class BoardDAO extends JDBConnect {
 		try {
 			//특정 일련번호에 해당하는 게시물을 수정한다. 
 			String query = "UPDATE board SET "
-						+ " title=?, content=?, ofile=?, nfile=? "
+						+ " boardTitle=?, boardContent=?, ofile=?, nfile=? "
 						+ " WHERE idx=? ";
 			
 			psmt = con.prepareStatement(query);
@@ -182,5 +188,25 @@ public class BoardDAO extends JDBConnect {
 		}
 		
 		return result;
+	}
+	
+	public int selectCount(String b_flag) {
+		
+		int totalCount = 0;
+		
+		String query = "SELECT COUNT(*) FROM board WHERE b_flag=" + b_flag;
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+			rs.next();
+			totalCount = rs.getInt(1);
+		} 
+		catch (Exception e) {
+			System.out.println("게시물 수를 구하는 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return totalCount;
 	}
 }
